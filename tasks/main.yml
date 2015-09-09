@@ -12,6 +12,25 @@
              copy=no
              creates=/opt/remote_syslog/remote_syslog
 
+- name: Link remote_syslog to '/usr/local/bin'
+  file: src=/opt/remote_syslog/remote_syslog
+        dest=/usr/local/bin/remote_syslog
+        state=link
+- name: Enable remote_syslog in init.d / services
+  template: src=remote_syslog.init.d.j2 \
+            dest=/etc/init.d/remote_syslog
+            owner=root
+            group=root
+            mode=0755
+
+- name: Enable remote_syslog in systemd
+  template: src=remote_syslog.systemd.service.j2 \
+          dest=/etc/systemd/remote_syslog
+          owner=root
+          group=root
+          mode=0644
+  when: ansible_os_family == 'Debian'
+
 - name: Download Papertrail .pem file
   get_url: dest=/etc/papertrail-bundle.pem url=https://papertrailapp.com/tools/papertrail-bundle.pem sha256sum=c03a504397dc45b4fc05f978dbf02129793cbd2a0b64856c2ba1bb49a3b9aacb
 

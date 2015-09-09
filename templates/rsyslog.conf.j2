@@ -69,4 +69,4 @@ $ActionSendStreamDriver gtls # use gtls netstream driver
 $ActionSendStreamDriverMode 1 # require TLS
 $ActionSendStreamDriverAuthMode x509/name # authenticate by hostname
 $ActionSendStreamDriverPermittedPeer *.papertrailapp.com
-*.* @@{{ papertrail_host }}.papertrailapp.com:{{ papertrail_port }}
+*.* @@{{ papertrail_host }}:{{ papertrail_port }}
