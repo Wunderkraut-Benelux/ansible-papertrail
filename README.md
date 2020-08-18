@@ -1,3 +1,6 @@
+This repo has been moved to Bitbucket.
+https://bitbucket.org/appno/ansible-papertrail/src/master/
+
 # ansible-papertrail
 An ansible role for installing [Papertrail](https://papertrailapp.com).
 
